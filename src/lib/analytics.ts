@@ -46,7 +46,8 @@ export type ToolEventName =
   | "subtitle_demo_loaded"
   | "subtitle_time_shifted"
   | "subtitle_cleaned"
-  | "subtitle_exported";
+  | "subtitle_exported"
+  | "user_feedback";
 
 export function trackToolEvent(
   event: ToolEventName,

@@ -367,7 +367,7 @@ export default function SubtitleWorkspace({
       {!track ? (
         <div className="flex flex-col gap-4">
           <label
-            className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-10 text-center transition hover:border-emerald-600"
+            className="relative flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-8 sm:p-10 text-center transition hover:border-emerald-600 active:scale-[0.99]"
             onDragOver={(e) => e.preventDefault()}
             onDrop={(e) => {
               e.preventDefault();
@@ -378,14 +378,17 @@ export default function SubtitleWorkspace({
             <input
               type="file"
               accept=".mp4,.mkv,.webm,.mov,.srt,.vtt,.ass,.ssa,video/*,text/vtt,application/x-subrip"
-              className="hidden"
+              className="sr-only"
               onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
             />
-            <span className="text-4xl">🎬</span>
-            <span className="text-lg font-semibold">
+            <span className="pointer-events-none text-4xl">🎬</span>
+            <span className="pointer-events-none text-lg font-semibold">
               Drop a Video (.MP4, .MKV, .WebM) or Subtitle File (.SRT, .VTT, .ASS)
             </span>
-            <span className="text-sm text-slate-500">
+            <span className="pointer-events-none inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-xs">
+              📂 Tap or Click Here to Select Video / Subtitle File
+            </span>
+            <span className="pointer-events-none text-sm text-slate-500">
               {primaryHint ||
                 "Extracts embedded subtitle streams & converts between SRT, WebVTT, ASS and Clean Transcript (.TXT) — 100% locally in your browser."}
             </span>

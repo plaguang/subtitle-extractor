@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SubtitleWorkspace, { type SubtitleFormat } from "./SubtitleWorkspace";
+import FeedbackBar from "./FeedbackBar";
 
 export interface LandingConfig {
   h1: string;
@@ -107,11 +108,12 @@ export default function Landing({ config }: { config: LandingConfig }) {
         </section>
 
         {/* Interactive Subtitle Extractor & Converter Workspace */}
-        <section aria-label="Interactive Subtitle Extractor and Converter">
+        <section aria-label="Interactive Subtitle Extractor and Converter" className="space-y-4">
           <SubtitleWorkspace
             defaultExportFormat={config.defaultExportFormat}
             primaryHint={config.primaryHint}
           />
+          <FeedbackBar toolName="Subtitle Extractor & Converter" theme="light" />
         </section>
 
         {/* How It Works */}
