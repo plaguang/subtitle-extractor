@@ -1,0 +1,17 @@
+# SubStreamLab — Free Online Video Subtitle Extractor, SRT/VTT Converter & Subtitle Cleaner
+
+> SubStreamLab (https://subtitle-extractor.vercel.app) is a 100% client-side subtitle extraction, conversion, and synchronization studio. It extracts embedded subtitle tracks (`tx3g`, `wvtt`, `S_TEXT/UTF8`, `S_TEXT/ASS`) directly from `.MP4`, `.MKV`, and `.WEBM` video files in the browser without uploading multi-gigabyte videos, converts between `.SRT`, `.VTT`, `.ASS/.SSA`, and plain-text transcripts (`.TXT`), strips HTML/ASS tags and `[SDH]` cues, and shifts subtitle timestamps by milliseconds.
+
+## Core Tools & Canonical Routes
+
+- [Extract Subtitles from MP4, MKV & WebM Video Online](https://subtitle-extractor.vercel.app/): Parse MP4 (`moov`/`trak`/`tx3g`) and Matroska MKV (`EBML`) containers locally in your browser to extract soft-coded subtitle streams into `.SRT`, `.VTT`, or `.TXT` in seconds.
+- [SRT to VTT Converter Online](https://subtitle-extractor.vercel.app/srt-to-vtt): Convert SubRip (`.SRT`) subtitles into W3C WebVTT (`.VTT`) format for HTML5 `<track>`, JWPlayer, Video.js, and Cloudflare Stream, automatically normalizing comma timestamps (`00:01:12,450` -> `00:01:12.450`).
+- [VTT to SRT Converter Online](https://subtitle-extractor.vercel.app/vtt-to-srt): Convert WebVTT (`.VTT`) files from YouTube, Vimeo, and Coursera into numbered SubRip (`.SRT`) subtitles compatible with Premiere Pro, DaVinci Resolve, CapCut, and VLC.
+- [Subtitle Cleaner, SDH Stripper & Timestamp Sync Shifter](https://subtitle-extractor.vercel.app/subtitle-cleaner): Remove `<i>`, `<font>`, `{ \an8 }` positioning tags, and `[music]` / `(sighs)` hearing-impaired cues, shift all timestamps forward or backward (`+500ms` / `-500ms`), or export a clean timestamp-free `.TXT` transcript for LLM summarization.
+
+## Key Technical Capabilities
+
+- **Zero-Upload Video Container Parsing**: Reads binary video chunks directly via browser `File` / `ArrayBuffer` APIs—even 4 GB `.MKV` or `.MP4` movies are scanned locally in milliseconds.
+- **4-Way Format Conversion**: Instant conversion between `.SRT`, `.VTT`, `.ASS`, and clean `.TXT` transcripts.
+- **Interactive Cue Editor & Timeline Sync**: Search, edit individual subtitle lines, strip SDH/HTML clutter in one click, and apply millisecond time offsets across the entire file.
+- **Privacy**: 100% local in-browser execution; private video footage and unreleased transcripts never leave your device.

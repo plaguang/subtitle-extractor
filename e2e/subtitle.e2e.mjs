@@ -86,11 +86,15 @@ async function run() {
   await meta.waitFor({ state: "visible", timeout: 5000 });
   assert((await meta.innerText()).includes("WebVTT (.vtt)"), "成功上传并解析自定义 .VTT 字幕文件");
 
-  // 9. 校验全部子路由及 SEO 路由返回 HTTP 200
-  for (const route of ["/srt-to-vtt", "/vtt-to-srt", "/subtitle-cleaner", "/sitemap.xml", "/robots.txt"]) {
+  // 9. 校验全部子路由及 SEO 路由返回 HTTP 200 + LLMs.txt + AI 引荐识别
+  for (const route of ["/srt-to-vtt", "/vtt-to-srt", "/subtitle-cleaner", "/sitemap.xml", "/robots.txt", "/llms.txt"]) {
     const res = await page.goto(`${BASE}${route}`, { waitUntil: "domcontentloaded" });
     assert(res && res.status() === 200, `路由 ${route} 返回 HTTP 200`);
   }
+
+  await page.goto(`${BASE}/srt-to-vtt?utm_source=gemini.google.com`, { waitUntil: "networkidle" });
+  const aiAttr = await page.locator("html").getAttribute("data-ai-referral");
+  assert(aiAttr === "google:gemini", `GEOInflow AI 引荐归因识别 html[data-ai-referral="${aiAttr}"]`);
 
   assert(pageErrors.length === 0, `无页面 JS 错误 (${pageErrors.length})`);
 
